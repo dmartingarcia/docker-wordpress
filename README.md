@@ -13,6 +13,19 @@ docker-compose up -d
 
 And browse into `http://localhost:8000
 
+## Plugins
+
+Well, you want to add plugins right?
+
+then you need to add them into the plugins directory, but to make it easier to locate, I suggest to create a symlink to that directory:
+
+```
+ln -s wp/wp-content/plugins/ ./plugin
+```
+
+then, download and unzip all plugin files inside, and, _voilà_, you have them in your plugin tab inside of the administration page.
+
+https://wordpress.org/plugins/ here you can obtain your plugins
 
 ## Traefik integration`
 
