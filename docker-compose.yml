@@ -24,7 +24,7 @@ services:
       - ./wp:/var/www/html
     ports:
       - "8080:80"
-    restart: always
+    restart: on-failure
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: "${DB_USER}"
@@ -36,7 +36,13 @@ services:
       - "traefik.http.routers.wordpress.tls=true"
       - "traefik.http.routers.wordpress.entrypoints=websecure"
       - "traefik.http.routers.wordpress.tls.certresolver=lets-encrypt"
-      - "traefik.port=80"
+      - "traefik.port=8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 2m
     networks:
       - internal
       - web
