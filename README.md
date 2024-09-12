@@ -8,7 +8,7 @@ In this case, it contains a self-efficient *wordpress* setup.
 
 ```
 cp .env.example .env
-docker-compose up -d
+docker compose up -d
 ```
 
 And browse into `http://localhost:8000

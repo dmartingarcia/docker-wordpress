@@ -32,7 +32,7 @@ services:
       WORDPRESS_DB_NAME: "${DB_NAME}"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wordpress.rule=Host(`${HTTP_HOST}`, `www.${HTTP_HOST}`)"
+      - "traefik.http.routers.wordpress.rule=Host(`${HTTP_HOST}`) || Host(`www.${HTTP_HOST}`)"
       - "traefik.http.routers.wordpress.tls=true"
       - "traefik.http.routers.wordpress.entrypoints=websecure"
       - "traefik.http.routers.wordpress.tls.certresolver=lets-encrypt"
